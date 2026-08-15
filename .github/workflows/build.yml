@@ -1,31 +1,3 @@
-[app]
-
-# (str) Title of your application
-title = Egamberdi App
-
-# (str) Package name
-package.name = egamberdiapp
-
-# (str) Package domain (needed for android/ios packaging)
-package.domain = org.test
-
-# (str) Source code where the main.py live
-source.dir = .
-
-# (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas
-
-# (str) ApplicationTo'g'ridan-to'g me'yordagi `buildozer.spec` faylingizga kirmasdan, butun jarayonni GitHub Actions'ning o'zida avtomatik o'zgartiradigan kod tayyorlab beraman. 
-
-Ushbu yangi workflow kodi loyihangizdagi `buildozer.spec` fayliga `android.accept_sdk_license = True` qoidasini va barqaror **API 33** versiyasini o'zi avtomatik kiritib qo'yadi.
-
-### Bajariladigan ish:
-
-1. **`Code`** bo'limiga o'ting.
-2. **`.github/workflows/build.yml`** fayliga kiring va **`Edit file`** (uchta nuqta) tugmasini bosing.
-3. Ichidagi hamma narsani o'chirib, **o'rniga ushbu kodni to'liq joylang**:
-
-```yaml
 name: Build Android APK
 
 on:
@@ -52,7 +24,7 @@ jobs:
         pip install --upgrade pip
         pip install buildozer cython
 
-    - name: Patch buildozer.spec for Licenses & API
+    - name: Patch buildozer.spec for Licenses
       run: |
         if [ -f buildozer.spec ]; then
           sed -i 's/^#\? \?android.accept_sdk_license =.*/android.accept_sdk_license = True/' buildozer.spec
